@@ -1,0 +1,11 @@
+This is a library for parsing output from fierce2. It turns all of the available information
+into ruby objects to make it as easy as possible to iterate through. Please see known issues
+
+Example usage:
+fierce -dns google.com -format xml -output google.xml
+
+require('fierce-ruby')
+in_file = File.open("google.xml")
+doc = REXML::Document.new(in_file)
+dscan = DomainScan.new(doc.root.elements["domainscan"])
+p dscan.whois
